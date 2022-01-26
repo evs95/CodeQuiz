@@ -38,7 +38,7 @@ li strong{
   font-size: 48px;
 }
 
-li{
+nav ul li{
   display: inline;
   text-decoration: none;
   padding-right: 10%;
@@ -69,6 +69,10 @@ li{
   min-height: 100px;
 }
 
+ol li{
+  text-decoration: none;
+}
+
 .card-footer {
   text-align: left;
 }
@@ -89,16 +93,15 @@ li{
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
+  background-color: rgb(78, 33, 99);
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 22px;
   margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
   text-align: center;
   cursor: pointer;
 }
