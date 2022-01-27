@@ -67,6 +67,8 @@ nav ul li{
 
 .card-body {
   min-height: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 ol li{
@@ -75,6 +77,7 @@ ol li{
 
 .card-footer {
   text-align: left;
+  font-style: italic;
 }
 
 .card-footer::before {
@@ -101,7 +104,7 @@ ol li{
   display: inline-block;
   font-size: 16px;
   line-height: 22px;
-  margin: 16px 16px 16px 20px;
+  margin: 3px 0px;
   text-align: center;
   cursor: pointer;
 }
@@ -113,6 +116,20 @@ button[disabled] {
 
 .float-right {
   float: right;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+#options {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 690px) {

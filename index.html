@@ -12,75 +12,72 @@
       <header>
         <nav>
           <ul>
-            <li><a href="#viewHighScores">View HighScores</a></li>
+            <li><a href="#" id="HighScoresLink">View HighScores</a></li>
             <li><strong>Code Quiz</strong></li>
-            <li>Time : 100</li>
+            <li>Time : <span id="timerCount">100</span></li>
           </ul>
         </nav>
       </header>
       <section id="start">
         <div class="card">
           <div class="card-header">
-            <h3 id="question">Coding Quiz Challenge</h3>
+            <h3>Coding Quiz Challenge</h3>
           </div>
           <div class="card-body">
             <div>
               <p>Try to answer the code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds.</p>
-              <button class="btn">Start Quiz</button>
+              <button id="startQuiz" class="btn">Start Quiz</button>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="quiz">
+      <section id="quiz" data-state="hidden">
         <div class="card">
           <div class="card-header">
             <h3 id="question">Question</h3>
           </div>
           <div class="card-body">
             <div>
-              <ol>
-                <li>Option 1</li>
-                <li>Option 2</li>
-                <li>Option 3</li>
-                <li>Option 4</li>
+              <ol id="options" data-index="">
               </ol>
             </div>
           </div>
-          <div class="card-footer">
-            <div>Result</div>
+          <div id="result" class="card-footer">
           </div>
         </div>
       </section>
       
-      <section id="score">
+      <section id="score" data-state="hidden">
         <div class="card">
           <div class="card-header">
-            <h3 id="question">All done!</h3>
+            <h3>All done!</h3>
           </div>
           <div class="card-body">
             <div>
-              <p>Your final score is 22.</p>
+              <p>Your final score is <span id="finalScore"></span>.</p>
               <div>
                 <label>Enter initials:</label>
-                <input type="text"/>
-                <button class="btn">Submit</button>
+                <input id="initials" type="text"/>
+                <button class="btn" id="initialsSubmit">Submit</button>
               </div>
             </div>
+          </div>
+          <div id="finalQuesresult" class="card-footer">
           </div>
         </div>
       </section>
 
-      <section id="viewHighScores">
+      <section id="viewHighScores" data-state="hidden">
         <div class="card">
           <div class="card-header">
-            <h3 id="question">Highscores</h3>
+            <h3>Highscores</h3>
           </div>
           <div class="card-body">
             <div>
-                <p>1. AB - 22</p  >
-                <button class="btn">Go back</button>
-                <button class="btn">Clear Highscores</button>
+                <ol id="list"></ol>
+                <button id="goBack" class="btn">Go back</button>
+                <button id="clearScores" class="btn">Clear Highscores</button>
             </div>
           </div>
         </div>
