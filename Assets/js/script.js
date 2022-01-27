@@ -1,3 +1,4 @@
+//variable declaration
 var sectionSelectors = document.querySelectorAll("section");
 var startQuizBtn = document.querySelector("#startQuiz");
 var timerElement = document.querySelector("#timerCount");
@@ -49,6 +50,7 @@ var questions = [
     }
 ]
 
+//Initial function
 function init(){
     timerElement.textContent = 100;
     score = 0;
@@ -69,6 +71,7 @@ function init(){
     });
 }
 
+//start quiz
 function startQuiz(){
     timerCount = 100;
 
@@ -79,6 +82,7 @@ function startQuiz(){
     loadQuestion(0);
 }
 
+//starts timer
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
@@ -93,6 +97,7 @@ function startTimer() {
     }, 1000);
   }
 
+  // Load question
   function loadQuestion(index){
     optionsElement.innerHTML = '';
 
@@ -119,17 +124,14 @@ function startTimer() {
     });
     optionsElement.dataset.index = index;
     }
-    else{
-        //loadScoreboard();
-    }
-    
   }
 
+// Validate selected option
 function validateResult(questionIndex, selectedOption){
     var resultElement = document.querySelector("#result");
 
     if(questions[questionIndex].AnswerIndex == selectedOption){
-        score = score + 11;
+        score = score + 20;
         console.log("Q"+questionIndex+"\n Score"+score);
         return correct;
     }
@@ -139,6 +141,7 @@ function validateResult(questionIndex, selectedOption){
     }
 }
 
+//Load score board
 function loadScoreboard(result){
     sectionSelectors.forEach(element => {
         if(element.id == "score"){
@@ -152,6 +155,7 @@ function loadScoreboard(result){
     document.querySelector("#finalQuesresult").textContent = result;
 }
 
+// Add score list
 function addScoreToList(){
     clearInterval(timer);
     userScore.initials = initailsElement.value;
@@ -161,7 +165,10 @@ function addScoreToList(){
     loadHighScores();
 }
 
+//Load high scores
 function loadHighScores(){
+    highScoresListElement.innerHTML = '';
+
     scoreList = JSON.parse(localStorage.getItem("scorelist"));
     scoreList.sort(function(x,y){return parseInt(y.score) - parseInt(x.score)});
     sectionSelectors.forEach(element => {
@@ -180,6 +187,7 @@ function loadHighScores(){
     });
 }
 
+// time out alert
 function timeOutAlert(){
     window.alert("Oops!! Time up!\nPlease start the test again.");
     init();
@@ -187,6 +195,7 @@ function timeOutAlert(){
 
 init();
 
+// Adding event listerns for various elements
 startQuizBtn.addEventListener("click",startQuiz);
 
 optionsElement.addEventListener("click",function(event){
@@ -218,4 +227,12 @@ initailsElement.addEventListener("input",function(){
     document.querySelector("#finalQuesresult").textContent = "";
 });
 
-highScoresLink.addEventListener("click",loadHighScores);
+highScoresLink.addEventListener("click",function(){
+    var storedScores = localStorage.getItem("scorelist");
+    if(storedScores == null || storedScores == ""){
+        window.alert("No scores yet");
+    }
+    else{
+        loadHighScores();
+    }
+});
