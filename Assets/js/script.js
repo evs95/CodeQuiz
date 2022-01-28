@@ -158,8 +158,15 @@ function loadScoreboard(result){
 // Add score list
 function addScoreToList(){
     clearInterval(timer);
+
     userScore.initials = initailsElement.value;
     userScore.score = parseInt(document.querySelector("#finalScore").textContent);
+
+    var savedlist = localStorage.getItem("scorelist");
+    if(savedlist != null && savedlist != ""){
+        scoreList = JSON.parse(savedlist);
+    }
+
     scoreList.push(userScore);
     localStorage.setItem("scorelist",JSON.stringify(scoreList));
     loadHighScores();
@@ -228,6 +235,11 @@ initailsElement.addEventListener("input",function(){
 });
 
 highScoresLink.addEventListener("click",function(){
+
+    if(timerCount < 100){
+        clearInterval(timer);
+    }
+
     var storedScores = localStorage.getItem("scorelist");
     if(storedScores == null || storedScores == ""){
         window.alert("No scores yet");
@@ -236,3 +248,6 @@ highScoresLink.addEventListener("click",function(){
         loadHighScores();
     }
 });
+
+// Disable right click on the page.
+document.addEventListener('contextmenu', event => event.preventDefault());
